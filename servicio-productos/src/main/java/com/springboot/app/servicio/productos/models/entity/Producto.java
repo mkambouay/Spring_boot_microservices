@@ -12,13 +12,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.experimental.Accessors;
 
 @Data
-@AllArgsConstructor
-@Accessors(chain = true)
 @Entity
 @Table(name = "productos")
 public class Producto implements Serializable{
