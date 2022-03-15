@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springboot.app.servicio.productos.models.entity.Producto;
 import com.springboot.app.servicio.productos.models.service.IProductoService;
 
-
 @RestController
 public class ProductoController {
 
@@ -31,8 +30,8 @@ public class ProductoController {
 	public List<Producto> listar() {
 
 		return productoService.findAll().stream().map(producto -> {
-			//Integer.parseInt(env.getProperty("local.server.port"))
-			producto.setPort(port);
+			producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
+			// producto.setPort(port);
 			return producto;
 		}).collect(Collectors.toList());
 	}
@@ -40,17 +39,14 @@ public class ProductoController {
 	@GetMapping("/ver/{id}")
 	public Producto detalle(@PathVariable Long id) {
 		Producto producto = productoService.findById(id);
-		//Integer.parseInt(env.getProperty("local.server.port"))
-		producto.setPort(port);
-		
+		producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
+		// producto.setPort(port);
+
 		/*
-		try {
-			Thread.sleep(2000L);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		
+		 * try { Thread.sleep(2000L); } catch (InterruptedException e) { // TODO
+		 * Auto-generated catch block e.printStackTrace(); }
+		 */
+
 		return producto;
 	}
 
